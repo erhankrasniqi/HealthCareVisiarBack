@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - "5000:8080"
+    volumes:
+      # Enable hot reload in development (optional)
+      - ./CQRS-Decorator.API:/app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build

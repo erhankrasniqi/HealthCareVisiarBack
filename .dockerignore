@@ -1,0 +1,102 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Build results
+**/bin/
+**/obj/
+**/out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.pidb
+*.sln.docstates
+*.userprefs
+.vscode/
+.idea/
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+nuget.exe
+
+# Build files
+*.log
+*.wrn
+*.err
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Documentation (optional - include if you want docs in image)
+*.md
+!README.md
+
+# Docker files
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# Local development files
+appsettings.Development.json
+launchSettings.json
+
+# Migration history (already in code)
+**/Migrations/*.Designer.cs
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# IDE specific
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
