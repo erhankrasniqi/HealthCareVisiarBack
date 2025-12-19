@@ -13,7 +13,6 @@ namespace CQRS_Decorator.Application.DTOs
         public TimeSpan EndTime { get; set; }
         public string Status { get; set; }
         public string Reason { get; set; }
-        public string? Notes { get; set; } // Nullable - only filled when doctor completes appointment
         public DateTime CreatedOn { get; set; }
     }
 }

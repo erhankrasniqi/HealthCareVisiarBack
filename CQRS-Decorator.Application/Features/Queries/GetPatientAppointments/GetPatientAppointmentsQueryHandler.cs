@@ -43,7 +43,6 @@ namespace CQRS_Decorator.Application.Features.Queries.GetPatientAppointments
                     EndTime = appointment.EndTime,
                     Status = appointment.AppointmentStatus.ToString(),
                     Reason = appointment.Reason,
-                    Notes = appointment.Notes,
                     CreatedOn = appointment.CreatedOn
                 });
             }

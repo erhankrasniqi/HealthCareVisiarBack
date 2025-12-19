@@ -21,7 +21,6 @@ namespace CQRS_Decorator.Domain.Aggregates.AppointmentAggregate
         public TimeSpan EndTime { get; private set; }
         public AppointmentStatus AppointmentStatus { get; private set; }
         public string Reason { get; private set; }
-        public string? Notes { get; private set; }
 
         private Appointment() { }
 
@@ -49,7 +48,6 @@ namespace CQRS_Decorator.Domain.Aggregates.AppointmentAggregate
             EndTime = endTime;
             AppointmentStatus = AppointmentStatus.Scheduled;
             Reason = reason;
-            Notes = null;
 
             // Raise domain event
             AddDomainEvent(new AppointmentBookedEvent(
@@ -81,13 +79,12 @@ namespace CQRS_Decorator.Domain.Aggregates.AppointmentAggregate
                 Id, PatientId, DoctorId, AppointmentDate));
         }
 
-        public void Complete(string? notes = null)
+        public void Complete()
         {
             if (AppointmentStatus == AppointmentStatus.Cancelled)
                 throw new BusinessRuleViolationException("Cannot complete a cancelled appointment");
 
             AppointmentStatus = AppointmentStatus.Completed;
-            Notes = notes;
             SetModifiedOn(DateTime.UtcNow);
         }
 

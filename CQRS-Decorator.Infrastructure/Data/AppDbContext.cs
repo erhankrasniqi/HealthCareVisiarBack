@@ -1,6 +1,7 @@
 ﻿using CQRS_Decorator.Domain.Aggregates.AppointmentAggregate;
 using CQRS_Decorator.Domain.Aggregates.DoctorAggregate;
 using CQRS_Decorator.Domain.Aggregates.PatientAggregate;
+using CQRS_Decorator.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRS_Decorator.Infrastructure.Data
@@ -13,6 +14,25 @@ namespace CQRS_Decorator.Infrastructure.Data
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<Appointment> Appointments => Set<Appointment>();
         public DbSet<AppointmentStatusEntity> AppointmentStatuses => Set<AppointmentStatusEntity>();
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entries = ChangeTracker.Entries<IEntity<Guid>>();
+
+            foreach (var entry in entries)
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Entity.SetCreatedOn(DateTime.UtcNow);
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entry.Entity.SetModifiedOn(DateTime.UtcNow);
+                }
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

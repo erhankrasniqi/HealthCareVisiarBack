@@ -24,7 +24,6 @@ namespace CQRS_Decorator.Infrastructure.Migrations
                     EndTime = table.Column<TimeSpan>(type: "interval", nullable: false),
                     AppointmentStatus = table.Column<int>(type: "integer", nullable: false),
                     Reason = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    Notes = table.Column<string>(type: "text", nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
