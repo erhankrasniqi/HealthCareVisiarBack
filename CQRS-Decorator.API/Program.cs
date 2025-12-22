@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to use fixed ports
+builder.WebHost.UseUrls("https://localhost:7036", "http://localhost:5246");
+
 // Add services to the container.
 string corsPolicy = "CorsPolicy";
 

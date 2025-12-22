@@ -17,6 +17,7 @@ A modern healthcare appointment booking system built with .NET 9, implementing C
 - Repository pattern for data access
 - FluentValidation for request validation
 - Swagger/OpenAPI documentation
+- **Fixed ports (7036/5246)** for consistent API URL across environments
 
 ## Technologies
 
@@ -78,11 +79,26 @@ The application will automatically:
 - Create the database if it doesn't exist
 - Apply all migrations
 - Seed initial data (8 doctors, 4 appointment statuses)
+- **Start on fixed ports: HTTPS (7036) and HTTP (5246)**
 
 4. Access Swagger UI
 ```
-https://localhost:7001/swagger
+https://localhost:7036/swagger
 ```
+
+### API URLs
+
+The API runs on **fixed ports** for consistency:
+
+- **HTTPS (Production):** `https://localhost:7036`
+- **HTTP (Development):** `http://localhost:5246`
+
+**Frontend Configuration:**
+```javascript
+const API_BASE_URL = 'https://localhost:7036';
+```
+
+See [PORT-CONFIG.md](PORT-CONFIG.md) for detailed port configuration information.
 
 ## API Endpoints
 
